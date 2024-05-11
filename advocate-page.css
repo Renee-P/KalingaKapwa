@@ -1,0 +1,32 @@
+main p {
+  font-family: Inter;
+}
+
+main div {
+  text-align: center;
+}
+
+.info-main {
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+
+.column {
+  display: inline-block;
+  width: 330px;
+  vertical-align: top;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.adv-img {
+  width: 340px;
+}
+
+.column-header {
+  font-size: 29px;
+}
+
+.column-pg {
+  font-size: 20px;
+}
