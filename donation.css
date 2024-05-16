@@ -1,26 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
 *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
-  
+  font-family: Inter;
 }
-body{
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background:#F4F0E4;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
-  
-  
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.container{
-  position: relative;
+
+ .container{
   max-width: 700px;
   width: 150%;
   background-color:#F4F0E4;
@@ -28,6 +17,8 @@ body{
   border-radius: 5px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   bottom: 50px;
+  margin-bottom: 80px;
+  padding: 50px;
 }
 .container .title{
   font-size: 25px;
@@ -113,6 +104,7 @@ form .input-box span.details{
    margin: 35px 0
  }
  form .button input{
+  margin-top: 10px;
    height: 100%;
    width: 100%;
    border-radius: 5px;
@@ -126,7 +118,7 @@ form .input-box span.details{
    background:#97b39a;
  }
  form .button input:hover{
-  /* transform: scale(0.99); */
+  transform: scale(0.99);
   background:#97b39a;
   }
  @media(max-width: 584px){
@@ -199,163 +191,8 @@ form .user-details .input-box{
 
 #logo{
   position: relative;
+  display: block;
   width: 250px;
-  height: 50px;
   right: 10px;
   top: 20px;
-  
-  
-
 }
-
-.nav{
-  position: relative;
-}
-
-.logo2{
-  position: relative;
-  width: 151px;
-  right: 350px;
-  bottom: 30px
-}
-
-.site-name{
-  font-family: Sulphur Point;
-  font-weight: bold;
-  font-size: 45px;
-}
-
-a{
-  position: relative;
-  text-decoration: none;
-  color: inherit;
-  right: 350px;
-  bottom: 30px
-
-}
-
-.nav div{
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.links{
-  position: relative;
-  font-family: Inter;
-  font-size: 25px;
-  margin-left: 280px;
-  left: 650px;
-}
-
-.about, .get-inv, .team, .donate{
-  margin-left: 20px;
-}
-
-.donate{
-  font-weight: bold;
-  color: white;
-  background-color: #97B39A;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-footer {
-  background-color: #D6CCC2;
-  padding-left: 30px;
-  margin: 0; 
-  margin-top: auto;
-}
-
-footer div{
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 165px;
-  margin-left: 115px;
-}
-
-.footer-name{
-  font-family: Sulphur Point;
-  font-weight: bold;
-  font-size: 43px;
-  margin-top: 35px;
-  margin-bottom: 0px;
-}
-
-.short-desc{
-  width: 344px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.short-desc, .connect, .contact, .tp-copyright{
-  font-size: 20px;
-}
-
-.contact{
-  position: relative;
-  margin-bottom: 20px;
-  left: 780px;
-  bottom: 210px;
-}
-
-.connect-title, .contact-title{
-  font-size: 35px;
-  margin-bottom: 20px;
-  display: block;
-}
-
-hr{
-  margin-left: 0px;
-  width: 99%;
-  border-style: solid;
-  border-color: #676767;
-}
-
-.tp-copyright{
-  margin-bottom: 25px;
-}
-.connect{
-  position: relative;
-  left: -200px;
-  top: 26px;
-}
-.connect img{
-  border-radius: 50%;
-  width: 55px;
-  object-fit: fill;
-  margin-right: 8px;
-}
-
-.contact-details, .contact img{
-  display: inline-block;
-  vertical-align: middle;
-  margin:0;
-}
-
-.contact-email{
-  margin-bottom: 8px;
-}
-
-.contact-email, .contact-no{
-  margin-left: 0px;
-}
-
-.contact img{
-  width: 32px;
-}
-
-.contact div{
-  display: block;
-}
-
-/* style for cover picture for pages */
-
-.cover{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-
-

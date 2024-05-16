@@ -1,3 +1,6 @@
+*{
+  font-family: Inter;
+}
 
 .abt{
     text-align: center;
@@ -72,16 +75,21 @@
   margin-left: 65px;
   margin-right: 65px;
 }
+
 .btn{
-margin-left: 44%;
+  display: flex;
+  justify-content: center;
 }
+
 .btndesign{
   text-align: center;
   border-radius: 10px;
   font-size: 25px;
   background-color: #97B39A;
-  border-color: #97B39A;
   color: white;
+  padding: 8px 15px;
+  border:none;
+  margin-top: 10px;
 }
 .txt{
   font-size: 30px;
