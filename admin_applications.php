@@ -5,8 +5,25 @@
     <title>KalingaKapwa Admin - Applications</title>
     <link rel="stylesheet" href="admin - applications.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        tbody button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            margin: 0;
+            padding: 0;
+        }
+
+        tbody img{
+            height: 25px;
+        }
+    </style>
     <?php 
     include('db.php');
+
+    // Fetch data from the volunteers table
+    $sql = "SELECT * FROM volunteers";
+    $result = mysqli_query($conn, $sql);
     ?>
 </head>
 <body>
@@ -35,65 +52,36 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="applicationsTable">
-                    <!-- Application data will be inserted here dynamically -->
+                <tbody>
+                    <?php 
+                    // Display data from the volunteers table
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>{$row['fname']}</td>";
+                        echo "<td>{$row['lname']}</td>";
+                        echo "<td>{$row['email']}</td>";
+                        echo "<td>{$row['phone_no']}</td>";
+                        echo "<td>{$row['area']}</td>";
+                        echo "<td>
+                                <form action='process_application.php' method='post'>
+                                    <input type='hidden' name='volunteer_id' value='{$row['id']}'>
+                                    <button type='submit' class='check' name='approve' value='Approve' onclick='return confirm(\"Are you sure you want to approve this application?\")'><img src='images/checkbox.png'></button>
+                                    <button type='submit' class='ex' name='disapprove' value='Disapprove' onclick='return confirm(\"Are you sure you want to disapprove this application?\")'><img src='images/cancel.png'></button>
+
+                                </form>
+                              </td>";
+                        echo "</tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
     </div>
     <script>
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     const applicationsTable = document.getElementById('applicationsTable');
-        //     // Fetch data from applications.html and insert into the table
-        //     fetch('applications.html')
-        //         .then(response => response.text())
-        //         .then(data => {
-        //             applicationsTable.innerHTML = data;
-        //         })
-        //         .catch(error => console.error('Error fetching data:', error));
-        // });
-
-        // function removeApplication(button) {
-        //     const row = button.closest('tr');
-        //     row.remove();
-        // }
-
-        // function acceptApplication(button) {
-        //     const row = button.closest('tr');
-        //     const rowData = Array.from(row.children).map(td => td.textContent);
-        //     const [firstName, lastName, email, phone, area] = rowData;
-        //     // Transfer data to admin - volunteers
-        //     const volunteersTable = document.getElementById('volunteersTable');
-        //     const newRow = document.createElement('tr');
-        //     newRow.innerHTML = `
-        //         <td>${firstName}</td>
-        //         <td>${lastName}</td>
-        //         <td>${email}</td>
-        //         <td>${phone}</td>
-        //         <td>${area}</td>
-        //         <td><button onclick="deleteRow(this)">🗑️</button></td>
-        //     `;
-        //     volunteersTable.appendChild(newRow);
-        //     // Remove the application row
-        //     row.remove();
-        // }
-
-        // function rejectApplication(button) {
-        //     const row = button.closest('tr');
-        //     row.remove();
-        // }
-
-        // function deleteRow(button) {
-        //     const row = button.closest('tr');
-        //     row.remove();
-        // }
-
         function logout() {
             alert('Logged out');
         }
     </script>
-
     <script src="./admin.js"></script>
 </body>
 </html>
-

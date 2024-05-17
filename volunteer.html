@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>KalingaKapwa</title>
-    <link rel="stylesheet" href="donation.css">
+    <link rel="stylesheet" href="volunteer.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,39 +32,34 @@
         </header>
 
         <div>
-          <img src="images/volunteer2.png" width="65%" class="cover">
+          <img src="images/volunteer-cover.png" width="99%" class="cover">
          </div>
   
       <main>
         <div class="container">
           <div class="title">Application Form</div>
           <div class="content">
-            <form action="#">
+            <form form id="volunteerForm" method="post" action="process_volunteer.php">
               <div class="user-details">
                 <div class="input-box">
                   <span class="details">First Name</span>
-                  <input type="text" required>
+                  <input type="text" name="fname" required>
                 </div>
                 <div class="input-box">
                   <span class="details">Last Name</span>
-                  <input type="text"  required>
+                  <input type="text" name="lname" required>
                 </div>
                 <div class="input-box">
                   <span class="details">Email</span>
-                  <input type="text" required>
+                  <input type="email" name="email" required>
                 </div>
                 <div class="input-box">
                   <span class="details">Phone Number</span>
-                  <input type="text" required>
+                  <input type="tel" name="phone_no" required>
                 </div>
                 <div class="input-box">
                   <span class="details">Volunteer Area</span>
-                  <input type="text" required>
-                </div>
-              </div>
-              <div class="payment-details">
-                <div class="payment-options">
-                  <!-- Add more payment options here -->
+                  <input type="text" name="area" required>
                 </div>
               </div>
               <div class="button">
@@ -102,5 +97,33 @@
         <p class="tp-copyright"><a href="#" class="terms">Terms & Privacy</a>&nbsp;·&nbsp;© KalingaKapwa</p>
       </div>
     </footer>
+    <script>
+      document.getElementById('volunteerForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        var formData = new FormData(this);
+
+        fetch('process_volunteer.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text(); // Return the response body as text
+        })
+        .then(data => {
+          // Evaluate the JavaScript code returned by the server
+          eval(data);
+          // Clear the form fields after successful submission
+          this.reset();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again.');
+        });
+      });
+    </script>
   </body>
 </html>

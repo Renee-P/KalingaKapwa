@@ -32,7 +32,7 @@
                         <th>Email</th>
                         <th>Phone No.</th>
                         <th>Area</th>
-                        <th>Amount</th>
+                        <th>Amount (PHP)</th>
                     </tr>
                 </thead>
                 <tbody>
