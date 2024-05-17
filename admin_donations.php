@@ -35,29 +35,41 @@
                         <th>Amount</th>
                     </tr>
                 </thead>
-                <tbody id="donationsTable">
-                    <!-- Donation data will be inserted here dynamically from donations.html -->
+                <tbody>
+                    <?php
+                    // Fetch donation data from the database
+                    $sql = "SELECT fname, lname, email, phone_no, area, amount FROM donations";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        // Output data of each row
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($row['fname']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['lname']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['phone_no']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['area']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['amount']) . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='6'>No donations found</td></tr>";
+                    }
+
+                    // Close the database connection
+                    mysqli_close($conn);
+                    ?>
                 </tbody>
             </table>
         </div>
     </div>
     <script>
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     const donationsTable = document.getElementById('donationsTable');
-        //     // Fetch data from donations.html and insert into the table
-        //     fetch('donations.html')
-        //         .then(response => response.text())
-        //         .then(data => {
-        //             donationsTable.innerHTML = data;
-        //         })
-        //         .catch(error => console.error('Error fetching data:', error));
-        // });
-
         function logout() {
             alert('Logged out');
+            // Add your logout logic here
         }
     </script>
-
     <script src="./admin.js"></script>
 </body>
 </html>
