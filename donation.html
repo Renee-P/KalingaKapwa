@@ -35,34 +35,35 @@
         <div class="container">
           <div class="title">Donate</div>
           <div class="content">
-            <form action="#">
+
+            <form id="donationForm" method="post">
               <div class="user-details">
                 <div class="input-box">
                   <span class="details">First Name</span>
-                  <input type="text" required>
+                  <input type="text" name="fname" required>
                 </div>
                 <div class="input-box">
                   <span class="details">Last Name</span>
-                  <input type="text"  required>
+                  <input type="text" name="lname"  required>
                 </div>
                 <div class="input-box">
                   <span class="details">Email</span>
-                  <input type="email" required>
+                  <input type="email" name="email" required>
                 </div>
                 <div class="input-box">
                   <span class="details">Phone Number</span>
-                  <input type="tel" required>
+                  <input type="tel" name="phone_no" required>
                 </div>
                 <div class="input-box">
                   <span class="details">Area/City</span>
-                  <input type="text"  required>
+                  <input type="text" name="area"  required>
                 </div>
               </div>
               <div class="payment-details">
                 <span class="details">Payment Details</span>
                     <div class="input-box">
                     <span class="Amount">Enter Amount:</span>
-                  <input type="text" required>
+                  <input type="text" name="amount" required>
                 </div>
                 <div class="payment-options">
                   <label>
@@ -110,5 +111,26 @@
         <p class="tp-copyright"><a href="#" class="terms">Terms & Privacy</a>&nbsp;·&nbsp;© KalingaKapwa</p>
       </div>
     </footer>
+
+    <script>
+      document.getElementById('donationForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          var form = this;
+          var formData = new FormData(this);
+
+          fetch('process_donation.php', {
+              method: 'POST',
+              body: formData
+          })
+          .then(response => response.text())
+          .then(data => {
+              eval(data); 
+              form.reset(); 
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+      });
+  </script>
   </body>
 </html>
