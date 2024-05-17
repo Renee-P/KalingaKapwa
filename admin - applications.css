@@ -70,7 +70,7 @@ body {
 }
 
 .sidebar .logout-btn:hover {
-    background-color: #e8e2d1;
+    opacity: 70%;
 }
 
 .content {

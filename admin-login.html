@@ -16,12 +16,42 @@
     </div>
   </header>
   <main>
-    <div class="login">
+    <form class="login">
       <p class="login-header">Log In</p>
-      <input type="email" placeholder="Email">
-      <input type="password" placeholder="Password">
-      <button type="submit">Log In</button>
-    </div>
+      <input type="email" placeholder="Email" name="email">
+      <input type="password" placeholder="Password" name="password">
+      <button type="submit" value="Login">Log In</button>
+    </form>
   </main>
+
+  <script>
+    const form = document.querySelector("form")
+
+    form.addEventListener("submit",(e)=>{
+      e.preventDefault()
+
+      const email = form.email.value
+      const password = form.password.value
+
+      const authenticated = authentication(email,password)
+
+      if(authenticated){
+        window.location.href = "admin - volunteers.html"
+        alert("Log in successful!")
+      }else{
+        alert("User not found.")
+      }
+    })
+
+    //function to check username and password
+
+    function authentication(email, password){
+      if(email === "admin@gmail.com" && password === "password"){
+        return true
+      }else{
+        return false
+      }
+    }
+  </script>
 </body>
 </html>
